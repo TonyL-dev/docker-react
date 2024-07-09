@@ -8,6 +8,8 @@ RUN npm run build
 
 # we want to copy over to /app/build
 
-FROM nginx 
+FROM nginx
+# for Docker, this instruction does nothing, for Elastic Beanstalk this is a port mapping
+EXPOSE 80
 COPY --from=builder /app/build /usr/share/nginx/html
 # don't need to run anything because the default NGINX command is start
